@@ -1,6 +1,6 @@
 import localFont from "next/font/local";
 import "./globals.css";
-import RecoilContextProvider from "@/components/RecoilContextProvider";
+import JotaiProvider from "@/components/JotaiProvider";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -26,7 +26,7 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <RecoilContextProvider>
+        <JotaiProvider>
           <ToastContainer
             position="bottom-right"
             autoClose={5000}
@@ -37,7 +37,7 @@ export default function RootLayout({ children }) {
             theme="dark"
           />
           <div>{children}</div>
-        </RecoilContextProvider>
+        </JotaiProvider>
       </body>
     </html>
   );

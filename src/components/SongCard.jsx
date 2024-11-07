@@ -1,11 +1,14 @@
-import { Box, Card, CardContent, IconButton, Typography } from "@mui/material";
+"use client";
+import { playerStatus } from "@/utils/states";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 import PlayCircleIcon from "@mui/icons-material/PlayCircle";
 import PlaylistAddIcon from "@mui/icons-material/PlaylistAdd";
+import { Box, Card, CardContent, IconButton, Typography } from "@mui/material";
+import { useSetAtom } from "jotai";
 import Image from "next/image";
-import React from "react";
 
-const SongCard = ({ name, artist, cover, platLink }) => {
+const SongCard = ({ name, artist, cover, platLink, elem }) => {
+  const setStatus = useSetAtom(playerStatus);
   return (
     <>
       <Card sx={{ display: "flex" }}>
@@ -38,7 +41,18 @@ const SongCard = ({ name, artist, cover, platLink }) => {
             >
               <OpenInNewIcon />
             </IconButton>
-            <IconButton title="Play on Musicophile">
+            <IconButton
+              title="Play on Musicophile"
+              onClick={(el) => {
+                el.stopPropagation();
+                setStatus({
+                  link: elem?.downloadUrl[elem?.downloadUrl.length - 1]?.url,
+                  playing: true,
+                  name,
+                  artist: artist?.map((e) => e.name).join(" "),
+                });
+              }}
+            >
               <PlayCircleIcon />
             </IconButton>
             <IconButton title="Add to Musicophile Playlist">

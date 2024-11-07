@@ -1,7 +1,6 @@
 "use client";
 import {
   FormControl,
-  Grid2,
   IconButton,
   InputAdornment,
   TextField,
@@ -13,12 +12,10 @@ import axios from "axios";
 import { platAPIOrigin } from "@/utils";
 import SongCard from "@/components/SongCard";
 import { Masonry } from "@mui/lab";
-import YTMusic from "ytmusic-api";
 
 const Search = () => {
   const [searchVal, setSearchVal] = useState("");
   const [searchResult, setSearchResult] = useState();
-  const ytmusic = new YTMusic();
   const searchSongs = () => {
     const query = new URLSearchParams({ query: searchVal });
     axios
@@ -28,10 +25,6 @@ const Search = () => {
         setSearchResult(finalData);
       })
       .catch((err) => console.log("ERROR", err));
-    ytmusic.initialize().then(async (client) => {
-      const songs = await client.searchSongs(searchVal);
-      console.log("SOngs", songs);
-    });
   };
   return (
     <div className="ml-[245px] p-2">
@@ -74,6 +67,7 @@ const Search = () => {
                 name={elem?.name}
                 artist={elem?.artists?.primary}
                 platLink={elem?.url}
+                elem={elem}
                 cover={
                   elem?.image?.length > 2
                     ? elem?.image[1]?.url

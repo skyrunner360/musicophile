@@ -16,12 +16,12 @@
     "@mui/material": "^6.1.6",
     "appwrite": "^16.0.2",
     "axios": "^1.7.7",
+    "jotai": "^2.10.1",
     "react": "19.0.0-rc-02c0e824-20241028",
     "react-dom": "19.0.0-rc-02c0e824-20241028",
     "next": "15.0.2",
-    "react-toastify": "^10.0.6",
-    "recoil": "^0.7.7",
-    "ytmusic-api": "^5.2.2"
+    "react-h5-audio-player": "^3.9.3",
+    "react-toastify": "^10.0.6"
   },
   "devDependencies": {
     "postcss": "^8",

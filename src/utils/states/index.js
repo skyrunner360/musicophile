@@ -1,6 +1,8 @@
-import { atom } from "recoil";
+import { atom } from "jotai";
 
-export const userAuth = atom({
-  key: "userAuth",
-  default: null,
+export const playerStatus = atom({
+  link: null,
+  playing: false,
+  name: null,
+  artist: null,
 });
